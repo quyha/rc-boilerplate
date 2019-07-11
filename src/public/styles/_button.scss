@@ -1,0 +1,102 @@
+.button {
+  display: inline-block;
+  border: none;
+  border-radius: $border-radius-base;
+  position: relative;
+  padding: 12px 30px;
+  margin: 10px 1px;
+  font-size: $font-size-base;
+  letter-spacing: 0;
+  will-change: box-shadow, transform;
+  cursor: pointer;
+  text-align: center;
+  transition :box-shadow 0.2s $animation-curve-fast-out-linear-in, background-color 0.2s $animation-curve-default;
+  -webkit-transition: box-shadow 0.2s $animation-curve-fast-out-linear-in, background-color 0.2s $animation-curve-default;
+  -moz-transition: box-shadow 0.2s $animation-curve-fast-out-linear-in, background-color 0.2s $animation-curve-default;
+  -o-transition: box-shadow 0.2s $animation-curve-fast-out-linear-in, background-color 0.2s $animation-curve-default;
+  -ms-transition: box-shadow 0.2s $animation-curve-fast-out-linear-in, background-color 0.2s $animation-curve-default;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+  &.is-primary {
+    @include btn-styles($color-primary, false);
+    &.is-outlined {
+      color: $color-primary;
+      border-color: $color-primary;
+      &:focus, &:hover {
+        color: $color-white;
+        background-color: $color-primary;
+        border-color: transparent;
+      }
+    }
+    &.is-loading:after {
+      border-color: transparent transparent $color-white !important;
+    }
+  }
+  &.is-secondary {
+    @include btn-styles($color-secondary, false);
+  }
+  &.is-white{
+    &, &:focus, &:hover {
+      background-color: $color-white;
+      color: $color-text-secondary;
+      border: 1px solid $color-gray;
+    }
+    &:focus, &:hover {
+      @include button-shadow-color($color-gray);
+    }
+  }
+  &.is-info {
+    @include btn-styles($color-green, false);
+  }
+  &.is-dark {
+    @include btn-styles($color-black-lighter, false);
+  }
+  &.is-round{
+    border-radius: $border-radius-extreme;
+  }
+  &.is-outlined {
+    color: $color-text-secondary;
+    background-color: transparent;
+    border: .5px solid $color-gray-light;
+    &:focus, &:hover {
+      border-color: $color-gray;
+    }
+    &:focus, &:hover {
+      @include button-shadow-color($color-gray);
+    }
+  }
+  &:focus, &:active, &:active:focus {
+    outline: 0;
+  }
+  &.is-lg {
+    font-size: $btn-font-size-lg;
+    padding: 18px 36px;
+  }
+  &.is-md {
+    padding: 0.6rem 1.5rem;
+    font-size: $btn-font-size-base;
+  }
+  &.is-sm {
+    padding: 0.4rem 0.75rem;
+    font-size: $btn-font-size-sm;
+    border-radius: 3px;
+  }
+  &.is-xs {
+    padding: 4px 15px;
+    font-size: $btn-font-size-xs;
+  }
+  &.is-loading {
+    &:after {
+      position: absolute !important;
+      top: calc(50% - (1em / 2));
+      left: 5px;
+      @extend .spinner;
+    }
+  }
+}

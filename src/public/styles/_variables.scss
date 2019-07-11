@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "SF UI Text Regular";
+  src: url('./assets/fonts/SF-UI-Text-Regular.otf');
+}
+@font-face {
+  font-family: "SF UI Text Medium";
+  src: url('./assets/fonts/SF-UI-Text-Medium.otf');
+}
+@font-face {
+  font-family: "SF UI Text Bold";
+  src: url('./assets/fonts/SF-UI-Text-Bold.otf');
+}
+$font-primary: 'SF UI Text Regular';
+$font-medium: 'SF UI Text Medium';
+$font-bold: 'SF UI Text Bold';
+
+$color-primary: #404CF0 !default;
+$color-secondary: #4F566B !default;
+$color-tertiary: #EBB763 !default;
+$color-text-primary: #2A2F44 !default;
+$color-text-secondary: #4F566B !default;
+$color-text-tertiary: #A3ACB8 !default;
+$color-bg: #F7FAFC !default;
+$color-white: #FFFFFF !default;
+$color-gray: #A3ACB8 !default;
+$color-gray-light: #BDBDBD !default;
+$color-gray-lighter: #F7FAFC !default;
+$color-black: #2A2F44 !default;
+$color-black-lighter: #4F566B !default;
+$color-red: #FF0074 !default;
+$color-red-lighter: #FF3860 !default;
+$color-green: #209CEE !default;
+$color-blue-lighter: #F7FAFC !default;
+
+$border-radius-base: 5px !default;
+$border-radius-small: 2px !default;
+$border-radius-huge: 10px !default;
+$border-radius-extreme: 30px !default;
+
+$font-size-base: 16px !default;
+$font-size-medium: 14px !default;
+$font-size-large: 18px !default;
+$font-size-small: 12px !default;
+$font-size-h1: 32px !default;
+$font-size-h2: 24px !default;
+$font-size-h3: 20px !default;
+$font-size-h4: 16px !default;
+$font-size-h5: 14px !default;
+$font-size-h6: 12px !default;
+
+$btn-font-size-base: 14px !default;
+$btn-font-size-lg: 16px !default;
+$btn-font-size-sm: 12px !default;
+$btn-font-size-xs: 10px !default;
+
+$height-nav: 50px;
+$sidebar-width: 257px;
+
+$layout-padding-left: 124px;
+$layout-handhelds-padding-left: 10px;
+$layout-handhelds-landscape-padding-left: 50px;
+
+$input-padding-left: .75rem;
+
+/* SHADOWS */
+$shadow-key-umbra-opacity: 0.2 !default;
+$shadow-key-penumbra-opacity: 0.14 !default;
+$shadow-ambient-shadow-opacity: 0.12 !default;
+
+/* ANIMATION */
+$animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
+$animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
+$animation-curve-default: $animation-curve-fast-out-slow-in !default;

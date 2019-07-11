@@ -1,0 +1,38 @@
+%box {
+  background-color: $color-white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.1);
+}
+
+%has-left-sidebar {
+  display: grid;
+  grid-template-columns: minmax(170px, max-content) auto;
+  grid-column-gap: 16px;
+  grid-row-gap: 10px;
+  padding-top: 100px;
+  min-height: calc(100vh - 180px);
+  @include breakpoint(desktop-down) {
+    padding-top: 20px;
+    min-height: calc(100vh - 100px);
+  }
+  @include breakpoint(desktop-down) {
+    grid-template-columns: auto;
+    min-height: auto;
+  }
+}
+
+%has-right-sidebar {
+  display: grid;
+  grid-template-columns: auto minmax(270px, max-content);
+  grid-column-gap: 16px;
+  padding-top: 100px;
+  min-height: calc(100vh - 180px);
+  @include breakpoint(desktop-down) {
+    padding-top: 20px;
+    min-height: calc(100vh - 100px);
+  }
+  @include breakpoint(desktop-down) {
+    grid-template-columns: auto;
+    min-height: auto;
+  }
+}

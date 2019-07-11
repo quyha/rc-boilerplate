@@ -1,0 +1,207 @@
+$breakpoint-desktop-up: 960px;
+$breakpoint-large-desktop: 1200px;
+$breakpoint-small-tablet: 768px;
+$breakpoint-large-tablet: 1024px;
+$breakpoint-mobile: 640px;
+$breakpoint-mobile-landscape: 480px;
+
+@mixin breakpoint($media) {
+  @if $media == largeDesktop {
+    @media only screen and (min-width: $breakpoint-large-desktop) { @content }
+  }
+  @if($media == desktop-up) {
+    @media only screen and (min-width: $breakpoint-desktop-up) { @content; }
+  }
+  @if $media == desktop-down {
+    @media only screen and (max-width: calc(#{$breakpoint-desktop-up} - 1px)) { @content; }
+  }
+  @if $media == tablet-down {
+    @media only screen and (max-width: $breakpoint-small-tablet) { @content; }
+  }
+  @if $media == tablet-landscape {
+    @media only screen  and (min-device-width : $breakpoint-small-tablet)
+    and (max-device-width : $breakpoint-large-tablet)
+    and (orientation : landscape){ @content; }
+  }
+  @if $media == mobile {
+    @media only screen and (max-width: $breakpoint-mobile) { @content; }
+  }
+  @if $media == mobile-portrait {
+    @media only screen  and (max-width: $breakpoint-mobile)
+    and (orientation : portrait) { @content; }
+  }
+  @if $media == mobile-landscape {
+    @media only screen  and (min-width: 320px)
+    and (max-width: $breakpoint-mobile-landscape)
+    and (orientation : landscape) { @content; }
+  }
+  @if $media == retina {
+    @media (-webkit-min-device-pixel-ratio: 2) { @content; }
+  }
+  @if $media == iphone5 {
+    @media only screen and (device-aspect-ratio: 40/71) { @content }
+  }
+}
+@mixin box-shadow($content, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $content;
+    -moz-box-shadow:inset $content;
+    box-shadow:inset $content;
+  } @else {
+    -webkit-box-shadow: $content;
+    -moz-box-shadow: $content;
+    box-shadow: $content;
+  }
+}
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+@mixin transition($transitions){
+  -webkit-transition: $transitions;
+  -moz-transition: $transitions;
+  -o-transition: $transitions;
+  -ms-transition: $transitions;
+  transition: $transitions;
+}
+@mixin transition-duration($time) {
+  -webkit-transition-duration: $time;
+  -moz-transition-duration: $time;
+  -o-transition-duration: $time;
+  -ms-transition-duration: $time;
+  transition-duration: $time;
+}
+@mixin animation($value){
+  -webkit-animation: $value;
+  -moz-animation: $value;
+  -o-animation: $value;
+  -ms-animation: $value;
+  animation: $value;
+}
+@mixin animation-delay($time) {
+  -webkit-animation-delay: $time;
+  -moz-animation-delay: $time;
+  -o-animation-delay: $time;
+  -ms-animation-delay: $time;
+  animation-delay: $time;
+}
+@mixin placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+@mixin button-shadow-color($color){
+  box-shadow: 0 14px 26px -12px rgba($color, $shadow-key-penumbra-opacity * 3),
+  0  4px 23px 0px rgba(0,0,0, $shadow-ambient-shadow-opacity),
+  0  8px 10px -5px rgba($color, $shadow-key-umbra-opacity);
+}
+@mixin shadow-2dp-color($color){
+  box-shadow: 0 2px 2px 0 rgba($color, $shadow-key-penumbra-opacity),
+  0 3px 1px -2px rgba($color, $shadow-key-umbra-opacity),
+  0 1px 5px 0 rgba($color, $shadow-ambient-shadow-opacity);
+}
+
+@mixin btn-styles($btn-color, $has-shadow: true) {
+  //@include shadow-2dp-color($btn-color);
+  @if($has-shadow) { box-shadow: 0 4px 10px 0 rgba(0,0,0,0.25); }
+  &,
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  &:active:focus,
+  &:active:hover,
+  &.active:focus,
+  &.active:hover,
+  .open > &.dropdown-toggle,
+  .open > &.dropdown-toggle:focus,
+  .open > &.dropdown-toggle:hover {
+    background-color: $btn-color;
+    color: $color-white;
+  }
+
+  &:focus,
+  &:active,
+  &:hover{
+    @include button-shadow-color($btn-color);
+  }
+
+  &.disabled,
+  &:disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      box-shadow: none;
+    }
+  }
+
+  &.btn-simple{
+    background-color: transparent;
+    color: $btn-color;
+    box-shadow: none;
+
+    &:hover,
+    &:focus,
+    &:active{
+      background-color: transparent;
+      color: $btn-color;
+    }
+  }
+
+}
+@mixin image-size($width: auto, $height: auto) {
+  width: $width;
+  max-height: $height;
+}
+
+@mixin aspect-ratio($width, $height, $class-inner-box: '') {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  @if $class-inner-box != '' {
+    > #{$class-inner-box} {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+
+@mixin columns($columns, $columnGap) {
+  -webkit-columns: $columns;
+  -moz-columns: $columns;
+  columns: $columns;
+  -webkit-column-gap: $columnGap;
+  -moz-column-gap: $columnGap;
+  column-gap: $columnGap;
+}
