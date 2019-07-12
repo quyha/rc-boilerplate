@@ -8,7 +8,7 @@ const instance = axios.create({
     headers: { 'Content-Type': 'application/json' }
 });
 
-export const setAuthorization = (h: { [key: string]: any }) => instance.defaults.headers.common.Authorization = h;
+export const setAuthorization = (h: ?string) => instance.defaults.headers.common.Authorization = h;
 
 function handleResponse(res: any): Promise<mixed> {
     return new Promise((resolve, reject) => {
