@@ -4,7 +4,8 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
-const ifProd = x => !process.env.NODE_ENV !== 'production' && x;
+const ifProd = x => process.env.NODE_ENV === 'production' && x;
+const isDev = process.env.NODE_ENV === 'development';
 
 const config = {
     entry: [
@@ -29,8 +30,8 @@ const config = {
                 test: /\.scss$/,
                 use: [
                     {
-                        loader: process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
-                        options: process.env.NODE_ENV === 'development' ? {} : {
+                        loader: isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                        options: isDev ? {} : {
                             reloadAll: true,
                         }
                     },
@@ -38,13 +39,13 @@ const config = {
                         loader: 'css-loader',
                         options: {
                             url: false,
-                            sourceMap: process.env.NODE_ENV === 'development',
+                            sourceMap: isDev,
                         }
                     },
                     {
                         loader: 'sass-loader',
                         options: {
-                            sourceMap: process.env.NODE_ENV === 'development',
+                            sourceMap: isDev,
                             importer: globImporter(),
                         }
                     }
