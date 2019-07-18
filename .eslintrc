@@ -18,7 +18,7 @@
     "react/jsx-filename-extension": 0,
     "react/require-default-props": 0,
     "react/prefer-stateless-function": 1,
-    "react/prop-types": [ 2, { "skipUndeclared": true } ],
+    "react/prop-types": 0,
     "react/jsx-uses-vars": [ 2 ],
     "react/no-array-index-key": 0,
     "react/jsx-curly-spacing": [ 2, "always" ],
